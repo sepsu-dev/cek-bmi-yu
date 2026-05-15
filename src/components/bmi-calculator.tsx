@@ -50,7 +50,22 @@ export function BMICalculator() {
             <div key={item.id} className="space-y-5">
               <div className="flex justify-between items-end px-1">
                 <label htmlFor={item.id} className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 cursor-pointer">{item.label}</label>
-                <span className="text-5xl font-black text-slate-950 tracking-tighter">{item.val} <span className="text-sm text-slate-600 uppercase not-italic font-black">{item.unit}</span></span>
+                <div className="flex items-baseline gap-1">
+                  <input 
+                    type="number"
+                    value={item.val || ""}
+                    onChange={(e) => {
+                      const v = e.target.value === "" ? 0 : parseInt(e.target.value);
+                      item.set(v);
+                    }}
+                    onBlur={() => {
+                      if (item.val < item.min) item.set(item.min);
+                      if (item.val > item.max) item.set(item.max);
+                    }}
+                    className="w-24 text-right text-5xl font-black text-slate-950 tracking-tighter bg-transparent border-none outline-none focus:ring-0 p-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none cursor-text"
+                  />
+                  <span className="text-sm text-slate-600 uppercase not-italic font-black pb-1">{item.unit}</span>
+                </div>
               </div>
               <input 
                 id={item.id}
