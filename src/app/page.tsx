@@ -1,5 +1,4 @@
 import { BMICalculator } from "@/components/bmi-calculator";
-import { Heart, Activity } from "lucide-react";
 
 export function generateMetadata() {
   return {
@@ -17,7 +16,7 @@ export default function BMIAppPage() {
 
       <div className="max-w-6xl w-full relative z-10">
         <main className="flex items-center justify-center">
-           <BMICalculator />
+          <BMICalculator />
         </main>
       </div>
     </div>
